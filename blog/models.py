@@ -38,6 +38,20 @@ class Post(models.Model):
     eg to create a post
     post_1 = Post(titel='Blog 1', content='First post content!', author = user)
     after doing this you still need to save this post var by using post_1.save()
+    now since the post is created you can access the post by creating an object 
+
+    post = Post.objects.first()
+    post.title
+    post.date_posted
+
+    user.post_set.all() gives all the post
+    you can also create posts using this
+
+    user.post_set.create(title='blog 3', content='third post content!') now the author of this post
+    will be the username that was assigned to the 'user' object
+
+    now this will be useful in the file views.py where initially it was static data
+    but now importing the models will make it dynamic and cleaner
 
     the post will have a property in which we have to tell django that when we access this post
     what will we get by default, in this case we want the post title
