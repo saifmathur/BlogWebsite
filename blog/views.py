@@ -29,7 +29,11 @@ from datetime import datetime
 # Create your views here.
 def home(request):
     context = {
-        'posts': Post.objects.all(),
+        'posts': Post.objects.all(), # All posts are dynamic now
+        #if you go to the admin section after this you wont be able to see the posts there,
+        # you will first have to register this model
+        # go to blog/admin.py and register
+
         'title' : 'Home',
     }
     return render(request, 'blog/home.html', context)
