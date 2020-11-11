@@ -7,7 +7,8 @@
                 {% csrf_token %}
                 <fieldset class='form-group'>
                     <legend class='border-bottom mb-4'>Join Today!</legend>
-                    {{ form.as_p }}
+                    {{ form.as_p }} 
+                    <!-- as_p denotes that we're printing each line as a paragraph -->
                 </fieldset>
                 <div class="form-group">
                     <button class='btn btn-outline-info' type='submit'>Sign Up</button>
