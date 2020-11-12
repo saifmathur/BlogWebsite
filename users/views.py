@@ -4,6 +4,10 @@ from django.shortcuts import render, redirect
 # commenting that import 
 from django.contrib import messages
 
+# the log in required decorator
+from django.contrib.auth.decorators import login_required
+
+
 #importing the changed form from forms.py which we created
 from .forms import UserRegisterForm
 
@@ -45,3 +49,12 @@ def register(request):
     return render(request, 'users/register.html', {'form': form})
 
 
+
+'''in order to prevent anyone from going back to the profile page after logging out,
+    this can be done by typing '/profile' in the URL, to prevent this we need a 
+    log in required decorator provided by django '''
+
+@login_required  #this is a decorator
+
+def profile(request):
+    return render(request, 'users/profile.html')

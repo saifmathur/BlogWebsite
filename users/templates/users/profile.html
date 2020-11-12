@@ -1,0 +1,9 @@
+{% extends "blog/base.html" %}
+<!-- crispy forms take care of all the formatting for us thats why we dont need to use as_p -->
+
+{% load crispy_forms_tags %}
+    {% block content %}
+        <h1>Welcome! {{ user.username }}</h1> 
+        <!-- this 'user' is not something we have to pass in as a context as its a built in 
+        variable for the user -->
+    {% endblock content %}
