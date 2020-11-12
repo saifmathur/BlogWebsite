@@ -9,7 +9,7 @@
                 <!-- without this the form wont work -->
                 {% csrf_token %}
                 <fieldset class='form-group'>
-                    <legend class='border-bottom mb-4'>Join Today!</legend>
+                    <legend class='border-bottom mb-4'>Log In</legend>
                     <!-- {{ form.as_p }}  -->
                     <!-- we can use the '|' to specify that we want to use a filter which is crispy_forms_tags
                     we want our form to be filtered into a crispy-forms format -->
@@ -17,11 +17,11 @@
                     <!-- as_p denotes that we're printing each line as a paragraph -->
                 </fieldset>
                 <div class="form-group">
-                    <button class='btn btn-outline-info' type='submit'>Sign Up</button>
+                    <button class='btn btn-outline-info' type='submit'>Log In</button>
                 </div>
             </form>
             <div class='border-top pt-3'>
-                <small class='text-muted'>Already Have an account?</small> <a href="#" class='ml-2'>Sign in</a>
+                <small class='text-muted'>Need an account?</small> <a href="{% url 'register' %}" class='ml-2'>Register Here</a>
             </div>
         </div>
     {% endblock content %}

@@ -1,0 +1,9 @@
+{% extends "blog/base.html" %}
+<!-- crispy forms take care of all the formatting for us thats why we dont need to use as_p -->
+    {% block content %}
+        <h2>You have been logged out.</h2>
+        <div class='border-top pt-3'>
+            <small class='text-muted'>Already Have an account?</small> <a href="{% url 'login' %}">Login again</a>
+        </div>
+        
+    {% endblock content %}
