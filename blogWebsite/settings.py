@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
-
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 
@@ -121,6 +121,18 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# To not clutter up our project directory we need to change where the users will 
+# save their media
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+#a full path to a directory where we would like django to store uploaded files
+#for performance reasons these files are stored in the file system and not the database
+
+
+MEDIA_URL = '/media/'
+#public URL of that media root directory, this is how we're gonna access these files in the browser
+
+
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
