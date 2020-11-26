@@ -9,8 +9,7 @@ from django.contrib.auth.decorators import login_required
 
 
 #importing the changed form from forms.py which we created
-from .forms import UserRegisterForm
-
+from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
 
 '''
 after this, installed crispy forms and go to installed apps in the project folder
@@ -49,12 +48,17 @@ def register(request):
     return render(request, 'users/register.html', {'form': form})
 
 
-
 '''in order to prevent anyone from going back to the profile page after logging out,
     this can be done by typing '/profile' in the URL, to prevent this we need a 
     log in required decorator provided by django '''
 
 @login_required  #this is a decorator
-
 def profile(request):
-    return render(request, 'users/profile.html')
+    u_form = UserUpdateForm()
+    p_form = ProfileUpdateForm()
+
+    context = {
+        'u_form': u_form,
+        'p_form': p_form,
+    }
+    return render(request, 'users/profile.html',context)

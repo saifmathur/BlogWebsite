@@ -4,6 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 
 
 class UserRegisterForm(UserCreationForm):
+    print('User Register Form')
     email = forms.EmailField() #required is set to True
 
     # This meta will give us a nested namespace for configurations
@@ -15,3 +16,21 @@ class UserRegisterForm(UserCreationForm):
     class Meta:
         model = User
         fields = ['username','email','password1','password2']   
+
+
+####################################################
+from .models import Profile
+class UserUpdateForm(forms.ModelForm): #inherting from forms.ModelForm
+    print('User Update Form')   
+    email = forms.EmailField()
+    class Meta:
+        model = User
+        fields = ['username','email']   
+
+class ProfileUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        field = ['image']
+
+# These two forms are gonna look like just one form
+########################################################

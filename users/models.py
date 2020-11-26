@@ -14,7 +14,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     #CASCADE, if the user is deleted then delete the profile
     #we want a one to one relationship with the user model
-    image = models.ImageField(default='default.jpg', upload_to='profile_pics')
+    image = models.ImageField(default='default.png', upload_to='profile_pics')
     #NOTE: you need pillow lib for storing images
     '''
     Now, we create a dunder str method so that when we print this out
