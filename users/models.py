@@ -32,7 +32,7 @@ class Profile(models.Model):
     # Since we need to view these profiles in the admin side we need to register this
     # model with the admin side
     
-    def save(self):
+    def save(self, *args, **kwargs):
         #this method already exists we're just over writing it
         super().save() #we're gonna run the save method of the parent class by super()
         #now we're gonna resize the profile picture
