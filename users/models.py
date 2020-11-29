@@ -9,6 +9,7 @@ to upload profile pictures, so we need to modify that by creating our own class 
 '''
 # Create your models here.
 from django.contrib.auth.models import User
+from PIL import Image #for profile resizing
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -31,4 +32,12 @@ class Profile(models.Model):
     # Since we need to view these profiles in the admin side we need to register this
     # model with the admin side
     
-    
+    def save(self):
+        #this method already exists we're just over writing it
+        super().save() #we're gonna run the save method of the parent class by super()
+        #now we're gonna resize the profile picture
+        img = Image.open(self.image.path)
+        if img.height > 300 or img.width > 300:
+            output_size = (300,300)
+            img.thumbnail(output_size)
+            img.save(self.image.path) 

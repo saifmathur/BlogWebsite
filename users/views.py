@@ -33,6 +33,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 # Create your views here.
 
 #gonna use predefined forms
+
 def register(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
@@ -54,8 +55,27 @@ def register(request):
 
 @login_required  #this is a decorator
 def profile(request):
-    u_form = UserUpdateForm()
-    p_form = ProfileUpdateForm()
+    if request.method == 'POST':
+        u_form = UserUpdateForm(request.POST, instance=request.user)
+        #this 'instance = request.user' parameter populates the update form with the current
+        #information of the user 
+        p_form = ProfileUpdateForm(request.POST,
+                                    request.FILES , #the images coming in
+                                    instance=request.user.profile)
+        if u_form.is_valid() and p_form.is_valid():
+            # then we save the data
+            u_form.save()
+            p_form.save()
+            print(request.user,' PROFILE UPDATED')
+            messages.success(request, f'Account has been updated.')
+            #gonna redirect the user to the profile page
+            return redirect('profile')
+    else:
+        u_form = UserUpdateForm(instance=request.user)
+        #this 'instance = request.user' parameter populates the update form with the current
+        #information of the user 
+        p_form = ProfileUpdateForm(instance=request.user.profile)
+
 
     context = {
         'u_form': u_form,

@@ -8,7 +8,8 @@
         variable for the user -->
         <div class="content-section">
             <div class="media">
-                <img class="rounded-circle account-img" src="{{ user.profile.img.url }}" width="200" height="200">
+                <img class="rounded-circle account-img" src='{{ user.profile.image.url }}' width="200" height="200">
+                <!-- <img class="rounded-circle account-img" src='../../../media/profile_pics/UKzYsgQg_400x400.jpg' width="200" height="200"> -->
                 <div class="media-body">
                     <h2 class="account-heading">{{user.username}}</h2>
                     <p class="text-secondary">{{user.email}}</p>
