@@ -14,6 +14,24 @@
                     <p class="text-secondary">{{user.email}}</p>
                 </div>
             </div>
+            <!-- FORM HERE -->
+            <form method='POST' enctype="multipart/form-data">
+                {% csrf_token %}
+                <!-- csrf token will protect our form against certain attacks -->
+                <!-- without this the form wont work -->
+                <fieldset class='form-group'>
+                    <legend class='border-bottom mb-4'>Profile Info</legend>
+                    <!-- {{ form.as_p }}  -->
+                    <!-- we can use the '|' to specify that we want to use a filter which is crispy_forms_tags
+                    we want our form to be filtered into a crispy-forms format -->
+                    {{ u_form | crispy }}
+                    {{ p_form | crispy }}
+                    <!-- as_p denotes that we're printing each line as a paragraph -->
+                </fieldset>
+                <div class="form-group">
+                    <button class='btn btn-outline-info' type='submit'>Update</button>
+                </div>
+            </form>
         </div>
     {% endblock content %}
 

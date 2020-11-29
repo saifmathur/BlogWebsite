@@ -30,7 +30,7 @@ class UserUpdateForm(forms.ModelForm): #inherting from forms.ModelForm
 class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = Profile
-        field = ['image']
+        fields = ['image']
 
 # These two forms are gonna look like just one form
 ########################################################
