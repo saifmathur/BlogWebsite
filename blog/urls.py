@@ -10,4 +10,6 @@ urlpatterns = [
 ]
 
 # when we use class based views we need to convert the class into an actual view by using the 'as_view()' method
-# now this change will give
+# now this change will give an error
+# what it was looking for was <app>/<model>_<viewtype>.html
+
